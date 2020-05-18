@@ -4,8 +4,7 @@ metadata:
   labels:
     app: currency-exchange
   name: currency-exchange
-  namespace: default
-spec:
+  spec:
   replicas: 1 #CHANGE
   minReadySeconds: 45
   selector:
@@ -58,8 +57,7 @@ metadata:
   labels: #PODS
     app: currency-exchange
   name: currency-exchange
-  namespace: default
-spec:
+  spec:
   ports:
   - # nodePort: 30702 #CHANGE
     port: 8000 #CHANGE
