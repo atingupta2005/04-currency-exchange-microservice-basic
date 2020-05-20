@@ -5,7 +5,7 @@ metadata:
     app: currency-exchange
   name: currency-exchange
   spec:
-  replicas: 1 #CHANGE
+  replicas: 1
   minReadySeconds: 45
   selector:
     matchLabels:
@@ -21,13 +21,13 @@ metadata:
         app: currency-exchange
     spec:
       containers:
-      - image: atingupta2005/currency-exchange:0.0.1-RELEASE #CHANGE
+      - image: atingupta2005/currency-exchange:latest
         imagePullPolicy: IfNotPresent
         name: currency-exchange
         ports:
         - name: liveness-port
           containerPort: 8000
-        resources: #CHANGE
+        resources:
           requests:
             cpu: 100m
             memory: 512Mi
@@ -59,11 +59,10 @@ metadata:
   name: currency-exchange
   spec:
   ports:
-  - # nodePort: 30702 #CHANGE
-    port: 8000 #CHANGE
+    port: 8000
     protocol: TCP
-    targetPort: 8000 #CHANGE
+    targetPort: 8000
   selector:
     app: currency-exchange
-  sessionAffinity: None #CHANGE
+  sessionAffinity: None
   type: LoadBalancer
