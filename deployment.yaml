@@ -59,7 +59,7 @@ metadata:
   name: currency-exchange
 spec:
   ports:
-    port: 8000
+  - port: 8000
     protocol: TCP
     targetPort: 8000
   selector:
