@@ -2,38 +2,37 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: currency-exchange
-  name: currency-exchange
+    app: nginx
+  name: nginx
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: currency-exchange
+      app: nginx
   template:
     metadata:
       labels:
-        app: currency-exchange
+        app: nginx
     spec:
       containers:
-      - image: atingupta2005/currency-exchange:latest
-        imagePullPolicy: IfNotPresent
-        name: currency-exchange
+      - image: nginx
+        name: nginx
         ports:
-          containerPort: 8000
+          containerPort: 80
       restartPolicy: Always
 ---
 apiVersion: v1
 kind: Service
 metadata:
   labels: #PODS
-    app: currency-exchange
-  name: currency-exchange
+    app: nginx
+  name: nginx
 spec:
   ports:
-  - port: 8000
+  - port: 80
     protocol: TCP
-    targetPort: 8000
+    targetPort: 80
   selector:
-    app: currency-exchange
+    app: nginx
   sessionAffinity: None
   type: NodePort
