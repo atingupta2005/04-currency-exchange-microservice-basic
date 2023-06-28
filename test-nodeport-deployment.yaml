@@ -5,7 +5,7 @@ metadata:
     app: currency-exchange
   name: currency-exchange
 spec:
-  replicas: 2
+  replicas: 1
   minReadySeconds: 15
   selector:
     matchLabels:
@@ -21,12 +21,12 @@ spec:
         app: currency-exchange
     spec:
       containers:
-      - image: nginx
+      - image: atingupta2005/currency-exchange:latest
         imagePullPolicy: IfNotPresent
         name: currency-exchange
         ports:
         - name: liveness-port
-          containerPort: 80
+          containerPort: 8000
         resources:
           requests:
             cpu: 100m
@@ -59,9 +59,9 @@ metadata:
   name: currency-exchange
 spec:
   ports:
-  - port: 80
+  - port: 8000
     protocol: TCP
-    targetPort: 80
+    targetPort: 8000
   selector:
     app: currency-exchange
   sessionAffinity: None
