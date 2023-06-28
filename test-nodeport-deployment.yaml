@@ -6,7 +6,7 @@ metadata:
   name: currency-exchange
 spec:
   replicas: 1
-  minReadySeconds: 15
+  minReadySeconds: 45
   selector:
     matchLabels:
       app: currency-exchange
@@ -40,14 +40,14 @@ spec:
             port: liveness-port
           failureThreshold: 5
           periodSeconds: 10
-          initialDelaySeconds: 15
+          initialDelaySeconds: 60
         livenessProbe:
           httpGet:
             path: /
             port: liveness-port
           failureThreshold: 5
           periodSeconds: 10
-          initialDelaySeconds: 15
+          initialDelaySeconds: 60
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
 ---
